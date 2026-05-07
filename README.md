@@ -202,6 +202,6 @@ PYTHONPATH=. python -m src.pipeline --dry-run --max-pages 2
 
 ## Author
 
-**Fikile Sondach** — Senior Business Intelligence Analyst, Cape Town  
+**Fikile Sondach** — Senior Analytics Engineer, Cape Town  
 BSc Actuarial Science · IFoA CT1–CT8 exemptions · Python · SQL · Power BI  
 [GitHub](https://github.com/Fikilesondach) · [CV](https://fikilesondach.github.io)
