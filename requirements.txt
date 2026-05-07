@@ -1,0 +1,8 @@
+requests==2.31.0
+python-dotenv==1.0.0
+gspread==6.1.2
+google-auth==2.29.0
+pandas==2.2.2
+pyyaml==6.0.1
+tenacity==8.2.3        # retry logic with exponential backoff
+ratelimit==2.2.1       # rate limiting decorator

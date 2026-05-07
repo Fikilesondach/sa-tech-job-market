@@ -1,0 +1,139 @@
+# config/skills_taxonomy.yaml
+# Skills keyword list by domain.
+# Each entry is matched (case-insensitive) against job title + description.
+# Order within a group doesn't matter.
+
+Languages:
+  - Python
+  - SQL
+  - R
+  - Java
+  - JavaScript
+  - TypeScript
+  - C#
+  - C++
+  - Scala
+  - Go
+  - Rust
+  - Julia
+  - MATLAB
+  - SAS
+  - VBA
+
+Cloud:
+  - AWS
+  - Azure
+  - GCP
+  - Google Cloud
+  - Snowflake
+  - Databricks
+  - Redshift
+  - BigQuery
+
+Data Engineering:
+  - Spark
+  - PySpark
+  - Kafka
+  - Airflow
+  - dbt
+  - Hadoop
+  - Hive
+  - Flink
+  - Luigi
+  - Prefect
+  - ETL
+  - ELT
+  - data pipeline
+  - data warehouse
+  - data lake
+  - data lakehouse
+
+ML & AI:
+  - scikit-learn
+  - TensorFlow
+  - PyTorch
+  - Keras
+  - XGBoost
+  - LightGBM
+  - CatBoost
+  - Hugging Face
+  - NLP
+  - computer vision
+  - deep learning
+  - neural network
+  - MLOps
+  - feature engineering
+  - model validation
+  - SHAP
+  - reinforcement learning
+  - LLM
+  - RAG
+  - langchain
+
+BI & Visualisation:
+  - Power BI
+  - Tableau
+  - Looker
+  - QlikView
+  - Qlik Sense
+  - MicroStrategy
+  - DAX
+  - Plotly
+  - Matplotlib
+  - Seaborn
+  - Streamlit
+
+Databases:
+  - PostgreSQL
+  - MySQL
+  - SQL Server
+  - Oracle
+  - MongoDB
+  - Redis
+  - Elasticsearch
+  - Cassandra
+  - DynamoDB
+  - SQLite
+  - Sybase
+
+DevOps & Infrastructure:
+  - Docker
+  - Kubernetes
+  - Terraform
+  - Ansible
+  - Jenkins
+  - GitHub Actions
+  - CI/CD
+  - Linux
+  - Bash
+  - Helm
+  - Prometheus
+  - Grafana
+
+Statistical & Actuarial:
+  - hypothesis testing
+  - regression
+  - time series
+  - forecasting
+  - GLM
+  - survival analysis
+  - Monte Carlo
+  - IFRS 17
+  - IFRS 9
+  - SAM
+  - Solvency II
+  - Prophet
+  - reserving
+  - pricing model
+
+Soft & Domain:
+  - Agile
+  - Scrum
+  - stakeholder communication
+  - data governance
+  - data quality
+  - credit risk
+  - fraud detection
+  - risk management
+  - financial modelling
+  - A/B testing

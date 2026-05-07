@@ -1,0 +1,184 @@
+# config/categories.yaml
+#
+# Dashboard category definitions for the SA Tech Job Market pipeline.
+#
+# IMPORTANT: Order determines classification priority — a title matching
+# an earlier category will NOT be re-evaluated against later ones.
+# Priority: ML & AI → Quant & Actuarial → Cloud & DevOps → Data →
+#           Software Engineering → Cybersecurity → Other Tech
+#
+# Keywords are matched case-insensitively with word boundaries.
+# Use the most specific terms first within each list to reduce false positives.
+# Multi-word phrases are fine — they act as substring anchors.
+
+categories:
+
+  # ── 1. ML & AI ──────────────────────────────────────────────────────────────
+  # Must come before Data to avoid "data scientist" being swallowed by "data analyst"
+  "ML & AI":
+    - machine learning
+    - ml engineer
+    - deep learning
+    - data scientist
+    - ai engineer
+    - artificial intelligence
+    - computer vision
+    - natural language processing
+    - nlp engineer
+    - llm engineer
+    - generative ai
+    - mlops
+    - ml platform
+    - recommendation
+    - neural network
+    - reinforcement learning
+    - feature engineer
+    - model deployment
+
+  # ── 2. Quant & Actuarial ────────────────────────────────────────────────────
+  # Before Data — "actuarial analyst" should not fall into Data
+  "Quant & Actuarial":
+    - actuarial
+    - actuary
+    - quantitative analyst
+    - quantitative researcher
+    - quant analyst
+    - quant researcher
+    - risk modell
+    - credit risk
+    - market risk
+    - operational risk
+    - risk analyst
+    - risk scientist
+    - pricing analyst
+    - pricing actuary
+    - reserving
+    - capital modell
+    - solvency
+    - ifrs 17
+    - economic capital
+    - stochastic modell
+    - financial modell
+    - treasury analyst
+
+  # ── 3. Cloud & DevOps ───────────────────────────────────────────────────────
+  "Cloud & DevOps":
+    - cloud engineer
+    - cloud architect
+    - solutions architect
+    - devops
+    - devsecops
+    - platform engineer
+    - site reliability
+    - sre
+    - infrastructure engineer
+    - systems engineer
+    - kubernetes
+    - terraform
+    - aws engineer
+    - azure engineer
+    - gcp engineer
+    - ci/cd
+    - build engineer
+    - release engineer
+
+  # ── 4. Data ─────────────────────────────────────────────────────────────────
+  # Catches analysts, engineers and BI roles not already taken by ML & AI
+  "Data":
+    - data analyst
+    - data engineer
+    - data architect
+    - analytics engineer
+    - business intelligence
+    - bi developer
+    - bi analyst
+    - bi engineer
+    - reporting analyst
+    - analytics consultant
+    - insight analyst
+    - power bi
+    - tableau developer
+    - looker developer
+    - etl developer
+    - data warehouse
+    - data platform
+    - database administrator
+    - dba
+    - data steward
+    - data governance
+    - data quality
+    - data product
+
+  # ── 5. Software Engineering ─────────────────────────────────────────────────
+  "Software Engineering":
+    - software engineer
+    - software developer
+    - backend developer
+    - frontend developer
+    - full stack
+    - fullstack
+    - full-stack
+    - web developer
+    - mobile developer
+    - android developer
+    - ios developer
+    - react developer
+    - angular developer
+    - java developer
+    - python developer
+    - node developer
+    - .net developer
+    - c# developer
+    - golang developer
+    - rust developer
+    - api developer
+    - integration developer
+    - systems developer
+    - firmware engineer
+    - embedded engineer
+    - qa engineer
+    - test engineer
+    - automation engineer
+    - test automation
+
+  # ── 6. Cybersecurity ────────────────────────────────────────────────────────
+  "Cybersecurity":
+    - cybersecurity
+    - cyber security
+    - information security
+    - infosec
+    - security analyst
+    - security engineer
+    - security architect
+    - penetration tester
+    - pen tester
+    - ethical hacker
+    - soc analyst
+    - security operations
+    - vulnerability
+    - threat analyst
+    - forensic analyst
+    - identity access
+    - iam engineer
+    - pki
+    - siem
+
+  # ── 7. Other Tech ───────────────────────────────────────────────────────────
+  # Catch-all — no keywords needed here; the classifier defaults to this
+  # when no earlier category matches. Leave list non-empty for YAML validity.
+  "Other Tech":
+    - it support
+    - helpdesk
+    - it manager
+    - scrum master
+    - agile coach
+    - product manager
+    - product owner
+    - program manager
+    - project manager
+    - technical writer
+    - it auditor
+    - erp consultant
+    - sap consultant
+    - salesforce
+    - servicenow

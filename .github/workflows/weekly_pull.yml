@@ -1,0 +1,79 @@
+# .github/workflows/weekly_pull.yml
+#
+# SA Tech Job Market — Weekly Adzuna Pipeline
+#
+# Runs every Sunday at 06:00 SAST (04:00 UTC).
+# Can also be triggered manually from the Actions tab for testing.
+#
+# Required repository secrets (Settings → Secrets and variables → Actions):
+#   ADZUNA_APP_ID               — Adzuna API app ID
+#   ADZUNA_APP_KEY              — Adzuna API app key
+#   GOOGLE_SHEETS_ID            — Google Sheet ID (not the full URL)
+#   GOOGLE_SERVICE_ACCOUNT_JSON — Full contents of service_account.json
+
+name: Weekly Job Market Pull
+
+on:
+  schedule:
+    - cron: "0 4 * * 0"   # 04:00 UTC = 06:00 SAST every Sunday
+  workflow_dispatch:
+    inputs:
+      max_pages:
+        description: "Max Adzuna pages per query (default: 10, use 2 for quick test)"
+        required: false
+        default: "10"
+
+      dry_run:
+        description: "Dry run — skip Sheets write (true/false)"
+        required: false
+        default: "false"
+
+jobs:
+  run-pipeline:
+    name: Ingest → Clean → Enrich → Write
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+
+    steps:
+      # ── 1. Checkout ───────────────────────────────────────────────────────
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      # ── 2. Python setup ───────────────────────────────────────────────────
+      - name: Set up Python 3.12
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: "pip"
+
+      # ── 3. Install dependencies ──────────────────────────────────────────
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      # ── 4. Write service account JSON from secret ────────────────────────
+      - name: Write service account credentials
+        run: |
+          echo '${{ secrets.GOOGLE_SERVICE_ACCOUNT_JSON }}' > service_account.json
+
+      # ── 5. Run pipeline ──────────────────────────────────────────────────
+      - name: Run pipeline
+        env:
+          ADZUNA_APP_ID: ${{ secrets.ADZUNA_APP_ID }}
+          ADZUNA_APP_KEY: ${{ secrets.ADZUNA_APP_KEY }}
+          GOOGLE_SHEETS_ID: ${{ secrets.GOOGLE_SHEETS_ID }}
+          GOOGLE_SERVICE_ACCOUNT_PATH: service_account.json
+
+        run: |
+          MAX_PAGES=${{ github.event.inputs.max_pages || '10' }}
+          DRY_RUN=${{ github.event.inputs.dry_run || 'false' }}
+
+          if [ "$DRY_RUN" = "true" ]; then
+            PYTHONPATH=. python -m src.pipeline --dry-run --max-pages "$MAX_PAGES"
+          else
+            PYTHONPATH=. python -m src.pipeline --max-pages "$MAX_PAGES"
+          fi
+
+      # ── 6. Clean up credentials ──────────────────────────────────────────
+      - name: Remove service account file
+        if: always()
+        run: rm -f service_account.json
